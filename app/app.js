@@ -13,7 +13,7 @@ class App extends PureComponent{
   render(){
     return(
       <div className="app_page">
-        app页面ha 
+        这是app页面，我就想试下打包成功不 
       </div>
     )
   }
