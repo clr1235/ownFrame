@@ -6,9 +6,13 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 // 将css抽离成单独的文件
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-console.log(pkg, 'pkg=====')
+// 解决由其它配置引起的ReferenceError: resolve is not defined报错
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 module.exports = {
   entry: {
     app: path.resolve(__dirname, '../index.js'),
@@ -29,41 +33,55 @@ module.exports = {
     rules: [{
       // 该配置指明使用babel解析js和jsx文件
       test: /\.(js|jsx)$/,
+      include: [path.resolve(__dirname, '../app')],
+      exclude: /node_modules/,
       use: [{
         loader: "babel-loader",
         options: {
-          exclude: /node_modules/,
           presets: ["@babel/preset-env", "@babel/preset-react"],
           plugins: [
             "@babel/transform-runtime",
-            "@babel/plugin-proposal-decorators",
-            {"legacy": true}
+            ["@babel/plugin-proposal-decorators", {"legacy": true}],
+            ["@babel/plugin-proposal-class-properties", { "loose" : true }]
           ]
         }
       }]
     }, {
-      test: /\.css$/,
-      // exclude: /node_modules/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: ['css-loader', 'postcss-loader']
-      })
-    }, {
       test: /\.less$/,
-      // exclude: /node_modules/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: ['less-loader', 'postcss-loader']
-      })
+      include: [path.resolve(__dirname, '../app')],
+      exclude: /node_modules/,
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: process.env.NODE_ENV === 'development',
+          },
+        },
+        'style-loader',
+        'css-loader',
+        'postcss-loader',
+        'less-loader'
+      ]
     }, {
-      test: /\.scss$/,
-      // exclude: /node_modules/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: ['sass-loader', 'postcss-loader']
-      })
+      test: /\.(sa|sc|c)ss$/,
+      include: [path.resolve(__dirname, '../app')],
+      exclude: /node_modules/,
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: process.env.NODE_ENV === 'development',
+          },
+        },
+        'style-loader',
+        'css-loader',
+        'postcss-loader',
+        'sass-loader'
+      ]
     }, {
       test: /\.(png|svg|jpg|gif)$/,
+      include: [path.resolve(__dirname, '../app')],
+      exclude: /node_modules/,
       use: [{
         loader: "file-loader",
         options: {
@@ -77,6 +95,8 @@ module.exports = {
       }]
     }, {
       test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,
+      include: [path.resolve(__dirname, '../app')],
+      exclude: /node_modules/,
       use: [{
         loader: 'file-loader',
         options: {
@@ -94,6 +114,17 @@ module.exports = {
           }
         }
       }]
+    }, {
+      test: /\.html$/,
+      loader: 'html-loader',
+      include: [path.resolve(__dirname, '../app')],
+      exclude: /node_modules/,
+      options: {
+        attrs: false,
+        minimize: true,
+        removeComments: true,
+        collapseWhitespace: true
+      }
     }]
   },
   plugins: [
@@ -106,8 +137,11 @@ module.exports = {
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html',
     }),
-    // 将css和js文件分离
-    new ExtractTextPlugin('[name].[chunkhash:8].css'),
+    // 将css和js文件分离  配合loader
+    new MiniCssExtractPlugin({
+      filename: '[name].[chunkhash:8].css',
+      chunkFilename: '[chunkhash:8].css'
+    }),
     
     // 提取公共代码
 

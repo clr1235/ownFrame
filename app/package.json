@@ -6,12 +6,13 @@
   "repository": "https://github.com/clr1235/ownFrame",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --config config/webpack.config.js --color --progress",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.js --color --progress",
     "build": "webpack --config config/webpack.config.js --progress",
-    "prod": "webpack --config config/webpack.prod.config.js --progress"
+    "prod": "cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js --progress"
   },
   "dependencies": {
     "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
@@ -19,13 +20,14 @@
     "autoprefixer": "^9.8.0",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
     "less": "^3.11.1",
     "less-loader": "^6.1.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
     "react": "^16.13.1",
