@@ -67,6 +67,12 @@ module.exports = {
       test: /\.(ts|tsx)$/,
       exclude: /node_modules/,
       use: [{
+        loader: "awesome-typescript-loader"
+      }]
+    }, {
+      test: /antd*\.(ts|tsx)$/,
+      include: /node_modules/,
+      use: [{
         loader: "awesome-typescript-loader",
         options: {
           useCache: true,
@@ -81,8 +87,8 @@ module.exports = {
         }
       }]
     }, {
-      test: /antd.*\.(less|css)$/, // 业务依然保持使用Scss,所以Less只限于引入库,所以我们需要限定范围减少搜索时间
-      exclude: /node_modules/,
+      test: /antd*\.(less|css)$/, // 业务依然保持使用Scss,所以Less只限于引入库,所以我们需要限定范围减少搜索时间
+      include: /node_modules/,
       use: [
         {
           loader: 'style-loader'
