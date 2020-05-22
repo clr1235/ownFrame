@@ -1,14 +1,23 @@
 // const pkg = require('../package.json')
 const path = require('path')
+const os = require('os') // 操作系统
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+// 压缩js
 const TerserPlugin = require('terser-webpack-plugin');
 // 将css抽离成单独的文件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// 压缩css
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const cssnano = require("cssnano");
+// 使用happypack提升打包速度
+const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+// 使用ts
+const { CheckerPlugin } = require('awesome-typescript-loader')
 
 
 module.exports = {
@@ -17,12 +26,12 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../public/js'),
-    filename: "[name].[chunkhash:8].js",
+    filename: "[name].[chunkhash:6].js",
     //对于按需加载(on-demand-load)或加载外部资源(external resources)（如图片、文件等）来说，output.publicPath 是很重要的选项。
     publicPath: "/"
   },
   resolve: { // 解析
-    extensions: ['.js', '.jsx', '.json']  // 自动解析确定的扩展
+    extensions: ['.js', '.jsx', '.tsx', '.ts', '.json']  // 自动解析确定的扩展
   },
   mode: "production",
   module: {
@@ -32,26 +41,34 @@ module.exports = {
       test: /\.(js|jsx)$/,
       exclude: /node_modules/,
       use: [{
-        loader: "babel-loader"
+        // loader: 'babel-loader',
+        // 把对.js 的文件处理交给id为js的HappyPack 的实例执行
+        loader: "happypack/loader?id=js"
+      }, {
+        loader: "source-map-loader"
       }]
     }, {
       test: /\.(ts|tsx)$/,
       exclude: /node_modules/,
-      use: {
-        loader: "ts-loader"
-      }
+      use: [{
+        loader: "happypack/loader?id=ts"
+      }]
     }, {
-      test: /\.less$/,
+      test: /antd.*\.less$/,
       exclude: /node_modules/,
       use: [
         {
-          loader: MiniCssExtractPlugin.loader,
+          loader: process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
           options: {
             hmr: process.env.NODE_ENV === 'development',
           },
         },
-        'style-loader',
-        'css-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true, // 启用css modules
+          }
+        },
         {
           loader: 'postcss-loader',
           options: {
@@ -70,13 +87,17 @@ module.exports = {
       exclude: /node_modules/,
       use: [
         {
-          loader: MiniCssExtractPlugin.loader,
+          loader: process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
           options: {
             hmr: process.env.NODE_ENV === 'development',
           },
         },
-        'style-loader',
-        'css-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true // 启用css modules
+          }
+        },
         {
           loader: 'postcss-loader',
           options: {
@@ -95,12 +116,12 @@ module.exports = {
             if(process.env.NODE_ENV === 'development'){
               return '[path][name].[ext]'
             }
-            return '[hash].[ext]'
+            return '../img/[name].[hash:6].[ext]'
           }
         }
       }]
     }, {
-      test:/\.(png|woff|woff2|svg|ttf|eot)($|\?)/i,
+      test:/\.(woff|woff2|svg|ttf|eot)($|\?)/i,
       exclude: /node_modules/,
       use: [{
         loader: 'file-loader',
@@ -109,13 +130,7 @@ module.exports = {
             if(process.env.NODE_ENV === 'development'){
               return '[path][name].[ext]'
             }
-            return '[hash].[ext]'
-          },
-          outputPath(file){
-            if(process.env.NODE_ENV === 'development'){
-              return '../dist'
-            }
-            return '../public/img'
+            return '../img/[name].[hash:6].[ext]'
           }
         }
       }]
@@ -153,12 +168,28 @@ module.exports = {
     }),
     // 将css和js文件分离  配合loader
     new MiniCssExtractPlugin({
-      filename: 'public/styles/[name].[contenthash:8].css',
-      chunkFilename: 'public/styles/[name].[contenthash:8].chunk.css'
-    })
+      filename: '../styles/[name].[contenthash:6].css',
+      chunkFilename: '../styles/[name].[contenthash:6].chunk.css'
+    }),
+    new CheckerPlugin(),
+    new HappyPack({
+      // 用id来标识 happypack处理哪类文件
+      id: 'js',
+      // 是否允许happypack输出日志
+      verbose: false,
+      // 共享进程池
+      threadPool: happyThreadPool,
+      // 如何处理 用法和loader的配置一样
+      loaders: ['babel-loader?cacheDirectory=true']
+    }),
+    new HappyPack({
+      id: 'ts',
+      verbose: false,
+      threadPool: happyThreadPool,
+      loaders: ['awesome-typescript-loader?cacheDirectory=true']
+    }),
     
   ],
-  // 提取公共模块 包括第三方库和自定义工具库
   optimization: {
     //打包压缩js/css文件
     minimizer: [
@@ -181,13 +212,17 @@ module.exports = {
           }
         }
       }),
-      new OptimizeCSSAssetsPlugin({})
+      new OptimizeCSSAssetsPlugin({
+        cssProcessor: cssnano,
+        canPrint: false,
+      })
     ],
+     // 提取公共模块 包括第三方库和自定义工具库
     splitChunks: {
       chunks: "all",  // async表示抽取异步模块，all表示对所有模块生效，initial表示对同步模块生效
       cacheGroups: {
         styles: {
-          name: 'styles',
+          name: 'app',
           test: /\.(css|less|scss)/,
           chunks: 'all',
           enforce: true,

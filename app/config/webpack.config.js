@@ -1,24 +1,25 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-
-
+const { CheckerPlugin } = require('awesome-typescript-loader')
+const tsImportPluginFactory = require("ts-import-plugin");
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 // __dirname表示当前文件所在目录，__filename表示正在执行脚本的文件名
 
 
 
 module.exports = {
-  entry: path.resolve(__dirname, '../index.js'),
+  entry: path.resolve(__dirname, '../index.tsx'),
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: "[name].[hash].bundle.js",
+    filename: "[name].[hash:6].bundle.js",
     // chunkFilename: "[name].[chunkhash].js" // 此选项决定了非入口chunk文件的名称
   },
   resolve: { // 解析
-    extensions: ['.js', '.jsx', '.json']  // 自动解析确定的扩展
+    extensions: ['.js', '.jsx', '.tsx', '.ts', '.json']  // 自动解析确定的扩展
   },
   mode: "development",
   devServer: {
@@ -34,7 +35,21 @@ module.exports = {
     historyApiFallback: true,
     inline: true,
     hot: true,
-    open: true
+    open: false,
+    stats: {
+      // 控制开发环境的控制台打印信息
+      colors: true,
+      modules: false,
+      children: false,
+      chunks: false,
+      chunkModules: false,
+      timings: false,
+      errors: true,
+      env: false,
+      version: false,
+      hash: false
+    }
+    
   },
   module: {
     // 创建模块时，请求的规则数组。这些规则能够修改模块的创建方式。这些规则能够对模块(module)应用loader，或者修改解析器(parser)
@@ -42,82 +57,75 @@ module.exports = {
       // 该配置指明使用babel解析js和jsx文件
       test: /\.(js|jsx)$/,
       exclude: /node_modules/,
+      enforce: 'pre',
       use: [{
-        loader: "babel-loader",
+        loader: "babel-loader"
+      }, {
+        loader: "source-map-loader"
+      }]
+    }, {
+      test: /\.(ts|tsx)$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: "awesome-typescript-loader",
         options: {
-          presets: ["@babel/preset-env", "@babel/preset-react"],
-          plugins: [
-            "@babel/transform-runtime",
-            [
-              "@babel/plugin-proposal-decorators",
-              { "legacy": true }
-            ]
-          ]
+          useCache: true,
+          useBabel: false, // !important!
+          getCustomTransformers: () => ({
+            before: [tsImportPluginFactory({
+              libraryName: 'antd',
+              libraryDirectory: 'lib',
+              style: true
+            })]
+          }),
         }
       }]
     }, {
-      test: /\.css$/,
+      test: /antd.*\.(less|css)$/, // 业务依然保持使用Scss,所以Less只限于引入库,所以我们需要限定范围减少搜索时间
       exclude: /node_modules/,
       use: [
-        {loader: "style-loader",},
         {
-          loader: "css-loader"
+          loader: 'style-loader'
         },
         {
-          loader: "postcss-loader",
+          loader: 'css-loader',
+          options: {
+            modules: false // 启用css modules
+          }
+        },
+        {
+          loader: 'postcss-loader',
           options: {
             plugins: () => [autoprefixer()]
           }
         },
         {
-          loader: "less-loader",
+          loader: 'less-loader',
           options: {
             javascriptEnabled: true
           }
         }
       ]
     }, {
-      test: /\.less$/,
+      test: /\.(sa|sc|c)ss$/,
       exclude: /node_modules/,
       use: [
         {
-          loader: "style-loader"
+          loader: 'style-loader'
         },
         {
-          loader: "css-loader"
+          loader: 'css-loader',
+          options: {
+            modules: true // 启用css modules
+          }
         },
         {
-          loader: "postcss-loader",
+          loader: 'postcss-loader',
           options: {
             plugins: () => [autoprefixer()]
           }
         },
-        {
-          loader: "less-loader",
-          options: {
-            javascriptEnabled: true
-          }
-        }
-      ]
-    }, {
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      use: [
-        {
-          loader: "style-loader"
-        },
-        {
-          loader: "css-loader"
-        },
-        {
-          loader: "postcss-loader",
-          options: {
-            plugins: () => [autoprefixer()]
-          }
-        },
-        {
-          loader: "sass-loader"
-        }
+        'sass-loader'
       ]
     }, {
       test: /\.(png|svg|jpg|gif)$/,
@@ -143,11 +151,11 @@ module.exports = {
     }]
   },
   plugins: [
-    // new CleanWebpackPlugin({
-    //   verbose: false,  //开启在控制台输出信息
-    //   root: path.resolve(__dirname, '../dist')   // 根目录
-    // }),
-    
+    new CleanWebpackPlugin({
+      verbose: false,  //开启在控制台输出信息
+      root: path.resolve(__dirname, '../dist')   // 根目录
+    }),
+    new CheckerPlugin(),
     new HtmlWebpackPlugin({
       title: 'development',
       template: path.resolve(__dirname, './index.html'),
@@ -155,10 +163,6 @@ module.exports = {
     }),
     // 热加载插件
     new webpack.HotModuleReplacementPlugin(),
-
-    // new webpack.DefinePlugin({
-    //   "process.env.NODE_ENV": JSON.stringify("development")
-    // })
-
-  ]
+    new FriendlyErrorsWebpackPlugin()
+  ],
 }
