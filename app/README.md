@@ -25,3 +25,22 @@
 
 
   使用@babel/preset-typescript取代awesome-typescript-loader和ts-loader  https://www.cnblogs.com/vvjiang/archive/2019/12/18/12057811.html
+
+## 爬坑记
+  1.由于loader配置 有问题 导致如下报错：
+  ERROR in ./index.tsx 7:2
+  Module parse failed: Unexpected token (7:2)
+  You may need an appropriate loader to handle this file type, currently no loader
+  s are configured to process this file. See https://webpack.js.org/concepts#loade
+  rs
+  |
+  | ReactDOM.render(
+  >   <Hello compiler="typeScript" framework="react" />,
+  |   document.getElementById('root')
+  | )
+  @ multi ./index.tsx app[0]
+
+  最后坑了好长时间，发现是配置中的include或者exclude之后的值，必须是绝对路径或者正则才行。
+2. webpack配置问题：HappyPack: plugin for the loader ‘1’ could not be found？
+  用了 happypack 之后，不能在 rules 里面的相关 loader 中配置 options，相反只能在 happypack 插件中配置 options！
+  

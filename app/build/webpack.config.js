@@ -18,7 +18,7 @@ const conf = {
   mode: process.env.NODE_ENV,
   // 入口
   entry: {
-    app: [path.resolve(__dirname, '../index.js')]
+    app: [path.resolve(__dirname, '../index.tsx')]
   },
   // 输出
   output: {
@@ -57,10 +57,6 @@ const conf = {
   plugins,
   // 压缩
   optimization,
-  // 统计信息
-  stats: {
-
-  },
   devtool: config.sourceMap
 }
 

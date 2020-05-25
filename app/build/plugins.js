@@ -62,7 +62,27 @@ const prodPlugins = [
     // 共享进程池
     threadPool: happyThreadPool,
     // 如何处理 用法和loader的配置一样
-    loaders: ['babel-loader?cacheDirectory=true']
+    loaders: ['babel-loader?cacheDirectory=true'],
+    // loaders: [{
+    //   loader: 'babel-loader',
+    //   cacheDirectory: true,
+    //   options: {
+    //     babelrc: false,   // 不启用.babelrc文件中的配置
+    //       presets: [
+    //         '@babel/preset-env',
+    //         '@babel/preset-react',
+    //         ['@babel/preset-typescript', {
+    //           allExtensions: true // 支持所有文件扩展名
+    //         }]
+    //       ],
+    //       plugins: [
+    //         ['import', { libraryName: 'antd', libraryDirectory: 'lib', style: true }],
+    //         ['@babel/plugin-proposal-decorators', { legacy: true }],
+    //         ['@babel/plugin-proposal-class-properties', { loose: true }],
+    //         '@babel/plugin-syntax-dynamic-import'
+    //       ]
+    //   }
+    // }]
   })
 ]
 

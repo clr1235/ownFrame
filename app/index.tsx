@@ -1,12 +1,12 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
 import { Hello } from "./hello";
 
 ReactDOM.render(
-  <Hello compiler="typeScript" framework="react" />,
-  document.getElementById('root')
-)
+    <Hello compiler="TypeScript" framework="React" />,
+    document.getElementById("root")
+);
 
 
 
