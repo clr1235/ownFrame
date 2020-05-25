@@ -22,3 +22,6 @@
 ## 注意点
   1. HappyPack 对file-loader、url-loader 支持的不友好，所以不建议对该loader使用。
   2. cssnano是PostCSS的CSS优化和分解插件。cssnano采用格式很好的CSS，并通过许多优化，以确保最终的生产环境尽可能小。插件将配合optimize-css-assets-webpack-plugin 将你的css文件做多当面的优化，以确保最终生成的文件对生产环境来说体积时最小的
+
+
+  使用@babel/preset-typescript取代awesome-typescript-loader和ts-loader  https://www.cnblogs.com/vvjiang/archive/2019/12/18/12057811.html

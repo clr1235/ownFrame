@@ -6,14 +6,15 @@
   "repository": "https://github.com/clr1235/ownFrame",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.config.js --progress",
-    "build": "webpack --config config/webpack.config.js --progress",
-    "prod": "cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js --progress"
+    "dev": "cross-env NODE_ENV=development APP_ENV=dev webpack-dev-server --config build/webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js",
+    "prod": "cross-env APP_ENV=prod npm run build"
   },
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
@@ -50,6 +51,7 @@
     "style-loader": "^1.2.1",
     "terser-webpack-plugin": "^3.0.1",
     "ts-import-plugin": "^1.6.6",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.9.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",
