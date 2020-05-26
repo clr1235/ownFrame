@@ -50,4 +50,6 @@
   SyntaxError: E:\person\ownFrame\app\index.tsx: Unexpected token, expected "," (7:11)
 
 4. 配置 performance选项可解决 打包时控制台输出的warning asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
-  
+
+5. file-loader打包处理图片时，没有将图片打包到指定的路径下？？？
+   处理：在file-loader的options下添加 esModule: false 属性  可解决  

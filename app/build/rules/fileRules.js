@@ -5,8 +5,8 @@ function handleFileLoader(assetsPrefix) {
     loader: 'file-loader',
     options: {
       limit: 10000,
-      name: assetsPath(`[name].[hash:6].[ext]`),
-      outputPath: assetsPath(`${assetsPrefix}/`)
+      name: assetsPath(`${assetsPrefix}/[name].[hash:6].[ext]`),
+      esModule: false  // 此配置必须写 要不然打包之后的img不会生成到指定的路径下
     }
   }
 }
