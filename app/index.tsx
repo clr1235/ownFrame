@@ -1,13 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { Hello } from "./hello";
+import { configure } from 'mobx';
+
 import registerServiceWorker from './sw'
+
+import App from "./app";
+
+configure({
+  enforceActions: "observed"
+});
 
 registerServiceWorker()
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <App />,
     document.getElementById("root")
 );
 

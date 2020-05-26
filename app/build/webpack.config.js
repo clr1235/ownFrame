@@ -9,6 +9,7 @@ const jsRules = require('./rules/jsRules')
 const fileRules = require('./rules/fileRules')
 const plugins = require('./plugins')
 const optimization = require('./optimization')
+const alias = require('./alias')
 
 // __dirname表示当前文件所在目录，__filename表示正在执行脚本的文件名
 
@@ -42,7 +43,7 @@ const conf = {
       })
     ],
     // 创建 import 或 require 的别名，来确保模块引入变得更简单
-    alias: {}
+    alias,
   },
   // 模块
   module: {
