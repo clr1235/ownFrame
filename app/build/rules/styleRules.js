@@ -1,9 +1,11 @@
+const path = require('path')
 // 将css抽离成单独的文件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 
 const config = require('../config')
-const {resolve} = require('../utils')
+// const {resolve} = require('../utils')
+
 
 const cssLoader = modules => ({
   loader: 'css-loader',
@@ -23,9 +25,11 @@ const sassLoader = {
 }
 
 const lessLoader = {
-  loader: 'less-loader',
+  loader: 'less-loader', // 升级到6.0.0版本以后 将javascriptEnabled挪到了lessOtions属性下
   options: {
-    javascriptEnabled: true,
+    lessOptions: {
+      javascriptEnabled: true,
+    }
   }
 }
 
@@ -45,12 +49,13 @@ const baseLoaders = modules => ([
 module.exports = [
   {
     test: /\.css$/,
-    include: [resolve('node_modules')],
+    // include: [resolve('node_modules')],
     use: baseLoaders(false)
   },
   {
     test: /\.scss$/,
-    include: [resolve('src')],
+    // include: resolve('src'),
+    exclude: /node_modules/,
     use: [...baseLoaders(true), sassLoader]
   },
   {

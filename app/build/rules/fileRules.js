@@ -5,7 +5,8 @@ function handleFileLoader(assetsPrefix) {
     loader: 'file-loader',
     options: {
       limit: 10000,
-      name: assetsPath(`${assetsPrefix}/[name].[hash:6].[ext]`)
+      name: assetsPath(`[name].[hash:6].[ext]`),
+      outputPath: assetsPath(`${assetsPrefix}/`)
     }
   }
 }

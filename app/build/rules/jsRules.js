@@ -1,14 +1,18 @@
 const path = require('path')
 
+const { resolve } = require('./../utils')
 const constants = require('../constants')
-
+const config = require('../config')
+const { cacheLoader } = require('./loaders')
 
 module.exports = constants.APP_ENV === 'dev' ? [
   {
     test: /\.(j|t)sx?$/,
-    // include: path.resolve(__dirname, './../src'),
+    // include: [resolve('src')],  // 放开会报错 Module parse failed: Unexpected token (7:4)
+// You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.
     exclude: /node_modules/,
     use: [
+      cacheLoader,
       {
         loader: 'babel-loader',
         // options: {
@@ -17,7 +21,7 @@ module.exports = constants.APP_ENV === 'dev' ? [
         //     '@babel/preset-env',
         //     '@babel/preset-react',
         //     ['@babel/preset-typescript', {
-        //       allExtensions: true // 支持所有文件扩展名
+        //       // allExtensions: true // 支持所有文件扩展名，开启会导致解析文件报错 
         //     }]
         //   ],
         //   plugins: [
@@ -34,11 +38,6 @@ module.exports = constants.APP_ENV === 'dev' ? [
   {
     test: /\.(j|t)sx?$/,
     exclude: /node_modules/,
-    use: [
-      {
-        // 把对.js 的文件处理交给id为js的HappyPack 的实例执行
-        loader: "happypack/loader?id=js",
-      }
-    ]
+    use: [cacheLoader, "happypack/loader?id=js"]
   }
 ]

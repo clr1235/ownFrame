@@ -43,4 +43,11 @@
   最后坑了好长时间，发现是配置中的include或者exclude之后的值，必须是绝对路径或者正则才行。
 2. webpack配置问题：HappyPack: plugin for the loader ‘1’ could not be found？
   用了 happypack 之后，不能在 rules 里面的相关 loader 中配置 options，相反只能在 happypack 插件中配置 options！
+
+3. @babel/preset-typescript 预设了allExtensions: true 导致了以下的报错
+  ERROR in ./index.tsx
+  Module build failed (from ./node_modules/babel-loader/lib/index.js):
+  SyntaxError: E:\person\ownFrame\app\index.tsx: Unexpected token, expected "," (7:11)
+
+4. 配置 performance选项可解决 打包时控制台输出的warning asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
   

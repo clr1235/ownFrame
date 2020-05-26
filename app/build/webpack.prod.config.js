@@ -259,8 +259,15 @@ module.exports = {
     chunks: false,
     chunkModules: false
   },
-  //添加 performance 配置关闭性能提示
+  // 配置如何展示性能提示。例如，如果一个资源超过 250kb，webpack 会对此输出一个警告来通知你。
   performance: {
-    hints: false
+    hints: "error", // 枚举
+    // maxAssetSize: 30000000, // 整数类型（以字节为单位）
+    // maxEntrypointSize: 50000000, // 整数类型（以字节为单位）
+    // assetFilter: function(assetFilename) {
+    //   // 提供资源文件名的断言函数
+    //   return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
+    
+    // }
   }
 }

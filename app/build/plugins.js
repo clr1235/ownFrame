@@ -17,7 +17,7 @@ const config = require('./config')
 const { assetsPath } = require('./utils')
 
 const basePlugins = [
-
+  new FriendlyErrorsWebpackPlugin()
 ]
 
 const devPlugins = [
@@ -28,8 +28,7 @@ const devPlugins = [
     inject: true
   }),
   // 热加载插件
-  new webpack.HotModuleReplacementPlugin(),
-  new FriendlyErrorsWebpackPlugin()
+  new webpack.HotModuleReplacementPlugin()
 ]
 
 const prodPlugins = [
@@ -71,9 +70,7 @@ const prodPlugins = [
     //       presets: [
     //         '@babel/preset-env',
     //         '@babel/preset-react',
-    //         ['@babel/preset-typescript', {
-    //           allExtensions: true // 支持所有文件扩展名
-    //         }]
+    //         '@babel/preset-typescript'
     //       ],
     //       plugins: [
     //         ['import', { libraryName: 'antd', libraryDirectory: 'lib', style: true }],

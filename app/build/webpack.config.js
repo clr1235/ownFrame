@@ -24,9 +24,9 @@ const conf = {
   output: {
     path: config.assetsRoot,
     // 此选项决定了输出bundle的名称。并且将写入到output.path选项指定的目录下。
-    filename: constants.APP_ENV === 'dev' ? '[name].js' : assetsPath('js/[nam].[chunkhash:6].js'),
+    filename: constants.APP_ENV === 'dev' ? '[name].js' : assetsPath('js/[name].[chunkhash:6].js'),
     // 此选项决定了非入口chunk文件的名称
-    chunkFilename: constants.APP_ENV === 'dev' ? '[name].js' : assetsPath('js/[nam].[id].[chunkhash:6].js'),
+    chunkFilename: constants.APP_ENV === 'dev' ? '[name].js' : assetsPath('js/[name].[id].[chunkhash:6].js'),
     // 对于按需加载(on-demand-load)或加载外部资源(external resources)（如图片、文件等）来说，output.publicPath 是很重要的选项。如果指定了一个错误的值，则在加载这些资源时会收到 404 错误。
     publicPath: config.assetsPublicPath
   },
@@ -57,7 +57,19 @@ const conf = {
   plugins,
   // 压缩
   optimization,
-  devtool: config.sourceMap
+  devtool: config.sourceMap,
+  stats: "errors-only",
+  performance: {
+    hints:'warning',
+	  //入口起点的最大体积
+	  maxEntrypointSize: 50000000,
+	  //生成文件的最大体积
+	  maxAssetSize: 30000000,
+	  //只给出 js 文件的性能提示
+	  assetFilter: function(assetFilename) {
+	    return assetFilename.endsWith('.js');
+	  }
+  }
 }
 
 if(process.env.NODE_ENV === 'development'){

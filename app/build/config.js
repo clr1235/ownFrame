@@ -7,6 +7,7 @@ const STATICDOMAIN = APP_ENV === 'prod' ? '.' : '';
 
 module.exports = {
   devPort: 8080,
+  srcPath: path.resolve(__dirname, './../src'),
   // 输出的html文件
   index: path.resolve(__dirname, `./../dist/${APP_ENV}/index.html`),
   assetsRoot: path.resolve(__dirname, `./../dist/${APP_ENV}`),
