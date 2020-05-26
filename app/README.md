@@ -35,7 +35,7 @@
   rs
   |
   | ReactDOM.render(
-  >   <Hello compiler="typeScript" framework="react" />,
+  |   <Hello compiler="typeScript" framework="react" />,
   |   document.getElementById('root')
   | )
   @ multi ./index.tsx app[0]
@@ -53,3 +53,4 @@
 
 5. file-loader打包处理图片时，没有将图片打包到指定的路径下？？？
    处理：在file-loader的options下添加 esModule: false 属性  可解决  
+6. antd库不能和css modules 一起使用否则样式会失效，所以应该单独的处理关闭antd库的css modules

@@ -49,12 +49,10 @@ const baseLoaders = modules => ([
 module.exports = [
   {
     test: /\.css$/,
-    // include: [resolve('node_modules')],
     use: baseLoaders(false)
   },
   {
     test: /\.scss$/,
-    // include: resolve('src'),
     exclude: /node_modules/,
     use: [...baseLoaders(true), sassLoader]
   },
