@@ -56,3 +56,5 @@
 6. antd库不能和css modules 一起使用否则样式会失效，所以应该单独的处理关闭antd库的css modules
 
 7. react 按需加载组件   @loadable/component
+
+8.  npx create-react-app react-typescript-demo --typescript  可以使用此命令生成typescript项目
