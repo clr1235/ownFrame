@@ -15,16 +15,33 @@ import { observer, inject } from 'mobx-react'
  * 
  * 类型断言
  */
-let notSure: any = 4;
-notSure = "maybe a string instead"
-notSure = false;
 
+
+
+interface SquareConfig {
+  color?: string;
+  width?: number;
+}
+
+function createSquare(config: SquareConfig): { color: string; area: number } {
+  let newSquare = {color: "white", area: 100};
+  if (config.clor) {
+    // Error: Property 'clor' does not exist on type 'SquareConfig'
+    newSquare.color = config.clor;
+  }
+  if (config.width) {
+    newSquare.area = config.width * config.width;
+  }
+  return newSquare;
+}
+
+let mySquare = createSquare({color: "black"});
 
 const Home = (props) => {
   // console.log('首页===>>>', props)
   return (
     <div >
-      <p>这是布尔值：{notSure}</p>
+      <p>这是布尔值</p>
     </div>
   )
 }
