@@ -424,7 +424,7 @@
 
 "@babel/plugin-syntax-typescript@^7.8.3":
   version "7.8.3"
-  resolved "http://r.cnpmjs.org/@babel/plugin-syntax-typescript/download/@babel/plugin-syntax-typescript-7.8.3.tgz#c1f659dda97711a569cef75275f7e15dcaa6cabc"
+  resolved "https://r.cnpmjs.org/@babel/plugin-syntax-typescript/download/@babel/plugin-syntax-typescript-7.8.3.tgz#c1f659dda97711a569cef75275f7e15dcaa6cabc"
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.3"
 
@@ -682,7 +682,7 @@
 
 "@babel/plugin-transform-typescript@^7.9.0":
   version "7.9.6"
-  resolved "http://r.cnpmjs.org/@babel/plugin-transform-typescript/download/@babel/plugin-transform-typescript-7.9.6.tgz#2248971416a506fc78278fc0c0ea3179224af1e9"
+  resolved "https://r.cnpmjs.org/@babel/plugin-transform-typescript/download/@babel/plugin-transform-typescript-7.9.6.tgz#2248971416a506fc78278fc0c0ea3179224af1e9"
   dependencies:
     "@babel/helper-create-class-features-plugin" "^7.9.6"
     "@babel/helper-plugin-utils" "^7.8.3"
@@ -873,7 +873,7 @@
 
 "@types/prop-types@*":
   version "15.7.3"
-  resolved "http://r.cnpmjs.org/@types/prop-types/download/@types/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
+  resolved "https://r.cnpmjs.org/@types/prop-types/download/@types/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
 
 "@types/q@^1.5.1":
   version "1.5.4"
@@ -881,7 +881,7 @@
 
 "@types/react-dom@^16.9.8":
   version "16.9.8"
-  resolved "http://r.cnpmjs.org/@types/react-dom/download/@types/react-dom-16.9.8.tgz#fe4c1e11dfc67155733dfa6aa65108b4971cb423"
+  resolved "https://r.cnpmjs.org/@types/react-dom/download/@types/react-dom-16.9.8.tgz#fe4c1e11dfc67155733dfa6aa65108b4971cb423"
   dependencies:
     "@types/react" "*"
 
@@ -902,7 +902,7 @@
 
 "@types/react@*", "@types/react@^16.9.35":
   version "16.9.35"
-  resolved "http://r.cnpmjs.org/@types/react/download/@types/react-16.9.35.tgz#a0830d172e8aadd9bd41709ba2281a3124bbd368"
+  resolved "https://r.cnpmjs.org/@types/react/download/@types/react-16.9.35.tgz#a0830d172e8aadd9bd41709ba2281a3124bbd368"
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -1331,7 +1331,7 @@ async-validator@^3.0.3:
 
 async@1.5.0:
   version "1.5.0"
-  resolved "http://r.cnpmjs.org/async/download/async-1.5.0.tgz#2796642723573859565633fc6274444bee2f8ce3"
+  resolved "https://r.cnpmjs.org/async/download/async-1.5.0.tgz#2796642723573859565633fc6274444bee2f8ce3"
 
 async@^2.5.0, async@^2.6.2:
   version "2.6.3"
@@ -1361,7 +1361,7 @@ autoprefixer@^9.8.0:
 
 awesome-typescript-loader@^5.2.1:
   version "5.2.1"
-  resolved "http://r.cnpmjs.org/awesome-typescript-loader/download/awesome-typescript-loader-5.2.1.tgz#a41daf7847515f4925cdbaa3075d61f289e913fc"
+  resolved "https://r.cnpmjs.org/awesome-typescript-loader/download/awesome-typescript-loader-5.2.1.tgz#a41daf7847515f4925cdbaa3075d61f289e913fc"
   dependencies:
     chalk "^2.4.1"
     enhanced-resolve "^4.0.0"
@@ -1441,7 +1441,7 @@ bcrypt-pbkdf@^1.0.0:
 
 big.js@^3.1.3:
   version "3.2.0"
-  resolved "http://r.cnpmjs.org/big.js/download/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
+  resolved "https://r.cnpmjs.org/big.js/download/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
 
 big.js@^5.2.2:
   version "5.2.2"
@@ -2298,7 +2298,7 @@ csso@^4.0.2:
 
 csstype@^2.2.0:
   version "2.6.10"
-  resolved "http://r.cnpmjs.org/csstype/download/csstype-2.6.10.tgz#e63af50e66d7c266edb6b32909cfd0aabe03928b"
+  resolved "https://r.cnpmjs.org/csstype/download/csstype-2.6.10.tgz#e63af50e66d7c266edb6b32909cfd0aabe03928b"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -2312,7 +2312,7 @@ cyclist@^1.0.1:
 
 d@1, d@^1.0.1:
   version "1.0.1"
-  resolved "http://r.cnpmjs.org/d/download/d-1.0.1.tgz#8698095372d58dbee346ffd0c7093f99f8f9eb5a"
+  resolved "https://r.cnpmjs.org/d/download/d-1.0.1.tgz#8698095372d58dbee346ffd0c7093f99f8f9eb5a"
   dependencies:
     es5-ext "^0.10.50"
     type "^1.0.1"
@@ -2662,7 +2662,7 @@ es-to-primitive@^1.2.1:
 
 es5-ext@^0.10.35, es5-ext@^0.10.50:
   version "0.10.53"
-  resolved "http://r.cnpmjs.org/es5-ext/download/es5-ext-0.10.53.tgz#93c5a3acfdbef275220ad72644ad02ee18368de1"
+  resolved "https://r.cnpmjs.org/es5-ext/download/es5-ext-0.10.53.tgz#93c5a3acfdbef275220ad72644ad02ee18368de1"
   dependencies:
     es6-iterator "~2.0.3"
     es6-symbol "~3.1.3"
@@ -2670,7 +2670,7 @@ es5-ext@^0.10.35, es5-ext@^0.10.50:
 
 es6-iterator@~2.0.3:
   version "2.0.3"
-  resolved "http://r.cnpmjs.org/es6-iterator/download/es6-iterator-2.0.3.tgz#a7de889141a05a94b0854403b2d0a0fbfa98f3b7"
+  resolved "https://r.cnpmjs.org/es6-iterator/download/es6-iterator-2.0.3.tgz#a7de889141a05a94b0854403b2d0a0fbfa98f3b7"
   dependencies:
     d "1"
     es5-ext "^0.10.35"
@@ -2678,7 +2678,7 @@ es6-iterator@~2.0.3:
 
 es6-symbol@^3.1.1, es6-symbol@~3.1.3:
   version "3.1.3"
-  resolved "http://r.cnpmjs.org/es6-symbol/download/es6-symbol-3.1.3.tgz#bad5d3c1bcdac28269f4cb331e431c78ac705d18"
+  resolved "https://r.cnpmjs.org/es6-symbol/download/es6-symbol-3.1.3.tgz#bad5d3c1bcdac28269f4cb331e431c78ac705d18"
   dependencies:
     d "^1.0.1"
     ext "^1.1.2"
@@ -2808,7 +2808,7 @@ express@^4.17.1:
 
 ext@^1.1.2:
   version "1.4.0"
-  resolved "http://r.cnpmjs.org/ext/download/ext-1.4.0.tgz#89ae7a07158f79d35517882904324077e4379244"
+  resolved "https://r.cnpmjs.org/ext/download/ext-1.4.0.tgz#89ae7a07158f79d35517882904324077e4379244"
   dependencies:
     type "^2.0.0"
 
@@ -3211,7 +3211,7 @@ handle-thing@^2.0.0:
 
 happypack@^5.0.1:
   version "5.0.1"
-  resolved "http://r.cnpmjs.org/happypack/download/happypack-5.0.1.tgz#850839426d6205a520bf913e962349fbe523a07c"
+  resolved "https://r.cnpmjs.org/happypack/download/happypack-5.0.1.tgz#850839426d6205a520bf913e962349fbe523a07c"
   dependencies:
     async "1.5.0"
     json-stringify-safe "5.0.1"
@@ -3934,7 +3934,7 @@ json3@^3.3.2:
 
 json5@^0.5.0:
   version "0.5.1"
-  resolved "http://r.cnpmjs.org/json5/download/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
+  resolved "https://r.cnpmjs.org/json5/download/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
 
 json5@^1.0.1:
   version "1.0.1"
@@ -4045,7 +4045,7 @@ loader-runner@^2.4.0:
 
 loader-utils@1.1.0:
   version "1.1.0"
-  resolved "http://r.cnpmjs.org/loader-utils/download/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
+  resolved "https://r.cnpmjs.org/loader-utils/download/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
   dependencies:
     big.js "^3.1.3"
     emojis-list "^2.0.0"
@@ -4109,7 +4109,7 @@ lodash@^4.0.0, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.1
 
 log-symbols@^2.1.0:
   version "2.2.0"
-  resolved "http://r.cnpmjs.org/log-symbols/download/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
+  resolved "https://r.cnpmjs.org/log-symbols/download/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
   dependencies:
     chalk "^2.0.1"
 
@@ -4119,7 +4119,7 @@ loglevel@^1.6.8:
 
 loglevelnext@^1.0.1:
   version "1.0.5"
-  resolved "http://r.cnpmjs.org/loglevelnext/download/loglevelnext-1.0.5.tgz#36fc4f5996d6640f539ff203ba819641680d75a2"
+  resolved "https://r.cnpmjs.org/loglevelnext/download/loglevelnext-1.0.5.tgz#36fc4f5996d6640f539ff203ba819641680d75a2"
   dependencies:
     es6-symbol "^3.1.1"
     object.assign "^4.1.0"
@@ -4508,7 +4508,7 @@ neo-async@^2.5.0, neo-async@^2.6.1:
 
 next-tick@~1.0.0:
   version "1.0.0"
-  resolved "http://r.cnpmjs.org/next-tick/download/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
+  resolved "https://r.cnpmjs.org/next-tick/download/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -5505,8 +5505,8 @@ querystring@0.2.0:
   resolved "https://registry.npm.taobao.org/querystring/download/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
 querystringify@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npm.taobao.org/querystringify/download/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
 
 raf@^3.4.0, raf@^3.4.1:
   version "3.4.1"
@@ -6075,7 +6075,7 @@ require-main-filename@^2.0.0:
 
 requires-port@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.npm.taobao.org/requires-port/download/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+  resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
 resize-observer-polyfill@^1.5.0, resize-observer-polyfill@^1.5.1:
   version "1.5.1"
@@ -6275,7 +6275,7 @@ send@0.17.1:
 
 serialize-error@^2.1.0:
   version "2.1.0"
-  resolved "http://r.cnpmjs.org/serialize-error/download/serialize-error-2.1.0.tgz#50b679d5635cdf84667bdc8e59af4e5b81d5f60a"
+  resolved "https://r.cnpmjs.org/serialize-error/download/serialize-error-2.1.0.tgz#50b679d5635cdf84667bdc8e59af4e5b81d5f60a"
 
 serialize-javascript@^2.1.2:
   version "2.1.2"
@@ -6985,11 +6985,11 @@ type-is@~1.6.17, type-is@~1.6.18:
 
 type@^1.0.1:
   version "1.2.0"
-  resolved "http://r.cnpmjs.org/type/download/type-1.2.0.tgz#848dd7698dafa3e54a6c479e759c4bc3f18847a0"
+  resolved "https://r.cnpmjs.org/type/download/type-1.2.0.tgz#848dd7698dafa3e54a6c479e759c4bc3f18847a0"
 
 type@^2.0.0:
   version "2.0.0"
-  resolved "http://r.cnpmjs.org/type/download/type-2.0.0.tgz#5f16ff6ef2eb44f260494dae271033b29c09a9c3"
+  resolved "https://r.cnpmjs.org/type/download/type-2.0.0.tgz#5f16ff6ef2eb44f260494dae271033b29c09a9c3"
 
 typedarray@^0.0.6:
   version "0.0.6"
@@ -6997,7 +6997,7 @@ typedarray@^0.0.6:
 
 typescript@^3.9.3:
   version "3.9.3"
-  resolved "http://r.cnpmjs.org/typescript/download/typescript-3.9.3.tgz#d3ac8883a97c26139e42df5e93eeece33d610b8a"
+  resolved "https://r.cnpmjs.org/typescript/download/typescript-3.9.3.tgz#d3ac8883a97c26139e42df5e93eeece33d610b8a"
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
@@ -7077,8 +7077,8 @@ urix@^0.1.0:
   resolved "https://registry.npm.taobao.org/urix/download/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
 
 url-parse@^1.4.3:
-  version "1.4.7"
-  resolved "https://registry.npm.taobao.org/url-parse/download/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.1.tgz#d5fa9890af8a5e1f274a2c98376510f6425f6e3b"
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
@@ -7267,7 +7267,7 @@ webpack-dev-server@^3.11.0:
 
 webpack-log@^1.2.0:
   version "1.2.0"
-  resolved "http://r.cnpmjs.org/webpack-log/download/webpack-log-1.2.0.tgz#a4b34cda6b22b518dbb0ab32e567962d5c72a43d"
+  resolved "https://r.cnpmjs.org/webpack-log/download/webpack-log-1.2.0.tgz#a4b34cda6b22b518dbb0ab32e567962d5c72a43d"
   dependencies:
     chalk "^2.1.0"
     log-symbols "^2.1.0"
